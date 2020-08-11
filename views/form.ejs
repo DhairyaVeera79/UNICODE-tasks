@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <h1>Student Details</h1><br><br>
+        <p>enter student details below:</p>
+
+        <form action="/" method="POST">
+            <label for="firstName">Enter first name of student</label><br>
+            <input type="text" name="firstName" value="<%= qs.firstName %>"><br>
+            <label for="lastName">Enter last name of student</label><br>
+            <input type="text" name="lastName" value="<%= qs.lastName %>"><br>
+            <label for="maths">Enter maths marks of student</label><br>
+            <input type="number" name="maths" value="<%= qs.maths %>"><br>
+            <label for="english">Enter english marks of student</label><br>
+            <input type="number" name="english" value="<%= qs.english %>"><br>
+            <input type="submit" name="submit" value="submit student details"/><br><br>
+            <input type="submit" name="showAllSudents" value="Show all student details"/>
+        </form>
+    </body>
+</html>

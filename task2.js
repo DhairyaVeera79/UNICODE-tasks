@@ -1,8 +1,8 @@
 const { joke } = require("express");
 const axios = require('axios');
 
-function jokes(){
-    axios.get('https://sv443.net/jokeapi/v2/joke/Any').then(joke => {
+function jokes(category){
+    axios.get('https://sv443.net/jokeapi/v2/joke/' + category).then(joke => {
         var JOKE;
         if (joke.data.type == "single"){
             JOKE = joke.data.joke;
@@ -24,4 +24,4 @@ function jokes(){
     });
 }
 
-jokes();
+jokes("Miscellaneous");

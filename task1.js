@@ -1,4 +1,4 @@
-var output = [];
+var students = [];
 
 function student_marks(list){
     var list_length = list.length;
@@ -11,7 +11,7 @@ function student_marks(list){
         var maths = Number(list[i].slice(second_space, third_space));
         var english = Number(list[i].slice(third_space, element_length));
         var average = (maths + english)/2;
-        var obj ={
+        var student ={
             "name": name,
             "score": {
                 "maths": maths,
@@ -19,25 +19,25 @@ function student_marks(list){
             }
         };
         if(i == 0){
-            output.push(obj);
+            students.push(student);
         }
         else{
             //loop to access all the elements currently present in output list
             for(var j = 0; j < i; j++){ 
-                current_average = (output[j].score.maths + output[j].score.english)/2;
+                current_average = (students[j].score.maths + students[j].score.english)/2;
                 if(average > current_average){
-                    output.splice(j, 0, obj);
+                    students.splice(j, 0, student);
                     break;
                     }
                 if(j == i-1)
                 {
-                    output.push(obj);
+                    students.push(student);
                 }
                 
             }
         }
     }
-    console.log(output); 
+    console.log(students); 
 }
 
 student_marks(["Rashmil Panchani 99 97", "Parag Vaid 95 93", "Siddharth Sanghavi 98 100"]);
