@@ -4,7 +4,7 @@ var app = express();
 var http = require('http');
 
 const hostname = 'localhost';
-const port = 3000;
+const port = 8888;
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
@@ -13,7 +13,7 @@ const mongoose = require('mongoose');
 
 const students = require('./models/students');
 
-const url = 'mongodb://localhost:27017/students';
+const url = 'mongodb://localhost:27017/studentServer';
 const connect = mongoose.connect(url);
 
 connect.then((db) => {
@@ -35,8 +35,6 @@ connect.then((db) => {
             })
             .then((student) => {
                 console.log(student);
-                
-                return students.find({}).exec();
             })
             .catch((err) => {
                 console.log(err);
