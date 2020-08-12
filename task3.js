@@ -4,7 +4,7 @@ var app = express();
 var http = require('http');
 
 const hostname = 'localhost';
-const port = 8088;
+const port = 8808;
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
@@ -13,20 +13,11 @@ var students = [];
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res){
-  res.render('form', {qs: req.query}); 
-});
-
-app.get('/success', function(req, res){
-  res.render('success', {qs: req.query}); 
-  res.send(students);
+  res.render('form', {qs: req.query})
+  console.log(students);
 });
 
 app.post('/', urlencodedParser, function(req, res){
-  if(req.body.showAllSudents){
-    res.redirect('/success');
-    res.sendfile
-  }
-  else{
     var student = {
       "name": req.body.firstName + " " + req.body.lastName,
       "score": {
@@ -36,7 +27,6 @@ app.post('/', urlencodedParser, function(req, res){
     };
     var average = (Number(req.body.maths) + Number(req.body.english))/2;
     var l = students.length;
-    console.log(student);
     if(l == 0){
       students.push(student);
     }
@@ -52,9 +42,9 @@ app.post('/', urlencodedParser, function(req, res){
           students.push(student);
         }
     }
-  }
+    console.log(students);
+    res.render('success', {data: students});
 }
-res.render('form', {qs: req.query});
 });
 
 const server = http.createServer(app);
